@@ -1,0 +1,35 @@
+package com.gyg.bio;
+
+import java.io.*;
+import java.net.Socket;
+import java.time.LocalDateTime;
+
+public class TimeServerHandler implements Runnable {
+    private Socket client;
+
+    public TimeServerHandler(Socket client) {
+        this.client = client;
+    }
+
+    @Override
+    public void run() {
+
+        // todo PrintWriter vs BufferedWriter
+        // todo OutputStreamWriter need or no need
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+                PrintWriter out = new PrintWriter(new OutputStreamWriter(client.getOutputStream()), true)) {
+
+            while (true) {
+                String req = in.readLine();
+                System.out.println("receive req: " + req);
+                if (req.contains("now")) {
+                    out.println(LocalDateTime.now());
+                } else {
+                    out.println("what do you want?");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
