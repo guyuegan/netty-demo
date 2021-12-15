@@ -22,6 +22,11 @@ public class TimeServerHandler implements Runnable {
             while (true) {
                 String req = in.readLine();
                 System.out.println("receive req: " + req);
+                // todo 为什么client断开连接会发送一个null?
+                if (req == null) {
+                    System.out.println("client disconnect: " + client);
+                    break;
+                }
                 if (req.contains("now")) {
                     out.println(LocalDateTime.now());
                 } else {

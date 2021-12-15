@@ -10,6 +10,7 @@ public class TimeServer {
             System.out.println("the time server is start in port: " + port);
             while (true) {
                 Socket client = server.accept();
+                System.out.println("client connect: " + client);
                 new Thread(new TimeServerHandler(client)).start();
             }
         }
