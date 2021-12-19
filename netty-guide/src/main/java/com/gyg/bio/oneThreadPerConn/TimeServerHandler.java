@@ -1,4 +1,4 @@
-package com.gyg.bio;
+package com.gyg.bio.oneThreadPerConn;
 
 import java.io.*;
 import java.net.Socket;

@@ -1,4 +1,4 @@
-package com.gyg.bio;
+package com.gyg.bio.oneThreadPerConn;
 
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -11,6 +11,7 @@ public class TimeServer {
             while (true) {
                 Socket client = server.accept();
                 System.out.println("client connect: " + client);
+                // 一个连接一个线程
                 new Thread(new TimeServerHandler(client)).start();
             }
         }
