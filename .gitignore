@@ -219,3 +219,5 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 /.idea/
 /netty-demo.iml
+/netty-basic/netty-basic.iml
+/netty-guide/netty-guide.iml
