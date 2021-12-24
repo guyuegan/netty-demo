@@ -1,0 +1,11 @@
+package netty;
+option java_package = "com.neo.codec.protobuf";
+option java_outer_classname = "ReqProto";
+
+message Req {
+  required int32 id = 1;
+  required string username = 2;
+  required string product = 3;
+  required string address = 4;
+}
+

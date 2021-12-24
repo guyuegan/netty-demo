@@ -1,0 +1,10 @@
+package netty;
+option java_package = "com.neo.codec.protobuf";
+option java_outer_classname = "RespProto";
+
+message Resp {
+  required int32 id = 1;
+  required string code = 2;
+  required string msg = 3;
+}
+
