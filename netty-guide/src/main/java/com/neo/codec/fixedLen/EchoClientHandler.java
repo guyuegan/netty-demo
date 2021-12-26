@@ -1,31 +1,27 @@
-package com.neo.codec.stick.solution;
+package com.neo.codec.fixedLen;
 
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDateTime;
 
-class TimeClientHandler extends ChannelInboundHandlerAdapter {
-    private int counter;
-
+public class EchoClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        for (int i = 0; i < 100; i++) {
-            ctx.writeAndFlush(Unpooled.copiedBuffer(("now"+System.lineSeparator()).getBytes(StandardCharsets.UTF_8)));
-        }
+        ctx.writeAndFlush(Unpooled.copiedBuffer("hi, dear server, i am echo client ! ! !".getBytes(StandardCharsets.UTF_8)));
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         String resp = (String) msg;
-        System.out.println("receive resp: " + resp + ", counter: " + ++counter);
+        System.out.println("client receive resp: " + resp);
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        ctx.channel().close();
-        System.err.println("server catch exception: " + cause);
+        ctx.close();
+        System.err.println("client catch exception: " + cause);
     }
 }
+

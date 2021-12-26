@@ -7,7 +7,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 
 import java.nio.charset.StandardCharsets;
 
-public class ClientMsgHandler extends SimpleChannelInboundHandler<ByteBuf> {
+class ClientMsgHandler extends SimpleChannelInboundHandler<ByteBuf> {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         /*

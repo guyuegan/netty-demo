@@ -31,6 +31,6 @@ class TimeServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         ctx.channel().close();
-        System.out.println("server catch exception: " + cause);
+        System.err.println("server catch exception: " + cause);
     }
 }

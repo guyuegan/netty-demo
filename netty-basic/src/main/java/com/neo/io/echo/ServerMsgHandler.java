@@ -10,7 +10,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 import java.nio.charset.StandardCharsets;
 
 @ChannelHandler.Sharable
-public class ServerMsgHandler extends ChannelInboundHandlerAdapter {
+class ServerMsgHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf in = (ByteBuf) msg;
