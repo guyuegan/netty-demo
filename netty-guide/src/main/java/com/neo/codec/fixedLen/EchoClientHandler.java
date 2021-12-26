@@ -6,7 +6,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 
 import java.nio.charset.StandardCharsets;
 
-public class EchoClientHandler extends ChannelInboundHandlerAdapter {
+class EchoClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         ctx.writeAndFlush(Unpooled.copiedBuffer("hi, dear server, i am echo client ! ! !".getBytes(StandardCharsets.UTF_8)));
