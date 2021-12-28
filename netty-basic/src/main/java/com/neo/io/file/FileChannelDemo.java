@@ -1,13 +1,11 @@
 package com.neo.io.file;
 
-import java.io.File;
-import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
 
+// https://juejin.cn/post/6844904186690142222
 public class FileChannelDemo {
     public static void main(String[] args) throws Exception {
         testGetFile();
