@@ -4,12 +4,6 @@ import org.jboss.marshalling.*;
 
 import java.io.IOException;
 
-import org.jboss.marshalling.Marshaller;
-import org.jboss.marshalling.MarshallerFactory;
-import org.jboss.marshalling.Marshalling;
-import org.jboss.marshalling.MarshallingConfiguration;
-import org.jboss.marshalling.Unmarshaller;
-
 
 class MarshalCodecFactory {
 

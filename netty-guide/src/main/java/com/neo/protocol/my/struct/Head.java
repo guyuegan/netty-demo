@@ -28,8 +28,7 @@ class Head {
     private long sessionId;
 
     /**
-     * 消息类型[8]：0-业务请求，1-业务响应，2-业务ONE WAY消息（既是请求又是响应消息）
-     * 3-握手请求，4-握手响应，5-心跳请求，6-心跳应答
+     * 消息类型[8]：{@link MsgType}
      */
     private byte type;
 
@@ -43,10 +42,5 @@ class Head {
      */
     private Map<String, Object> attachment = new HashMap<>();
 
-    @Getter
-    @AllArgsConstructor
-    enum MsgType {
-        BizReq(1)
-        int code;
-    }
+
 }
