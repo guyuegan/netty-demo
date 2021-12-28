@@ -1,5 +1,7 @@
-package com.neo.protocol.my;
+package com.neo.protocol.my.codec;
 
+import com.neo.protocol.my.struct.Head;
+import com.neo.protocol.my.struct.Msg;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 

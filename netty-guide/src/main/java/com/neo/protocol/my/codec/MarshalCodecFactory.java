@@ -1,4 +1,4 @@
-package com.neo.protocol.my;
+package com.neo.protocol.my.codec;
 
 import org.jboss.marshalling.*;
 

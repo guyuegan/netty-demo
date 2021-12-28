@@ -1,15 +1,14 @@
-package com.neo.protocol.my;
+package com.neo.protocol.my.codec;
 
+import com.neo.protocol.my.struct.Head;
+import com.neo.protocol.my.struct.Msg;
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
-import io.netty.handler.codec.MessageToMessageEncoder;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 class MsgDecoder extends LengthFieldBasedFrameDecoder {

@@ -1,6 +1,8 @@
-package com.neo.protocol.my;
+package com.neo.protocol.my.struct;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.ToString;
 
 import java.util.HashMap;
@@ -8,6 +10,7 @@ import java.util.Map;
 
 @Data
 @ToString
+public
 class Head {
     /**
      * 协议版本[32]：0xabef + 主版本 + 次版本
@@ -39,4 +42,11 @@ class Head {
      * 扩展字段[变长]
      */
     private Map<String, Object> attachment = new HashMap<>();
+
+    @Getter
+    @AllArgsConstructor
+    enum MsgType {
+        BizReq(1)
+        int code;
+    }
 }
