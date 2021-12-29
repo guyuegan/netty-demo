@@ -19,6 +19,7 @@ class AuthRespHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         Msg req = (Msg) msg;
+        log.info("server receive login req after encode: {}", req);
         // 如果是握手请求，处理，其他消息透传
         Msg authResp;
         if (req.isAuthReq()) {
@@ -30,7 +31,7 @@ class AuthRespHandler extends ChannelInboundHandlerAdapter {
             } else {
                 authResp = Msg.authFailureResp();
             }
-            log.info("login resp: {}", authResp);
+            log.info("server send login resp before encode: {}", authResp);
             ctx.writeAndFlush(authResp);
         } else {
             ctx.fireChannelRead(msg);

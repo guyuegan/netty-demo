@@ -11,13 +11,14 @@ class AuthReqHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         Msg authReq = Msg.authReq();
-        log.info("login req: {}", authReq);
+        log.info("client send login req before encode: {}", authReq);
         ctx.writeAndFlush(authReq);
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         Msg resp = (Msg) msg;
+        log.info("client receive login resp after decode: {}", resp);
         // 如果是握手应答消息，判断是否认证成功
         if (resp.isAuthResp()) {
             byte authRet = (byte) resp.getBody();

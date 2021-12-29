@@ -18,6 +18,7 @@ class HeartBeatReqHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         Msg resp = (Msg) msg;
         if (resp.isAuthResp()) {
+            log.info("client receive auth resp: {}", resp);
             // 起心跳任务
             heartBeatSchedule = ctx.executor()
                     .scheduleAtFixedRate(new HeartBeatTask(ctx), 5, 5, TimeUnit.SECONDS);
