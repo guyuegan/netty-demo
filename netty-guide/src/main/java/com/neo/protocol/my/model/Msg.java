@@ -1,4 +1,4 @@
-package com.neo.protocol.my.struct;
+package com.neo.protocol.my.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,6 +10,26 @@ import lombok.ToString;
 public class Msg {
     private Head head;
     private Object body;
+
+    public boolean isHeartBeatResp() {
+        return head != null && head.getType() == MsgType.HEART_BEAT_RESP.getCode();
+    }
+
+    public boolean isHeartBeatReq() {
+        return head != null && head.getType() == MsgType.HEART_BEAT_REQ.getCode();
+    }
+
+    public static Msg heartBeatResp() {
+        Head head = new Head();
+        head.setType(MsgType.HEART_BEAT_RESP.getCode());
+        return new Msg(head, null);
+    }
+
+    public static Msg heartBeatReq() {
+        Head head = new Head();
+        head.setType(MsgType.HEART_BEAT_REQ.getCode());
+        return new Msg(head, null);
+    }
 
     public boolean isAuthResp() {
         return head != null && head.getType() == MsgType.AUTH_RESP.getCode();

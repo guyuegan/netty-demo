@@ -1,7 +1,7 @@
 package com.neo.protocol.my.codec;
 
-import com.neo.protocol.my.struct.Head;
-import com.neo.protocol.my.struct.Msg;
+import com.neo.protocol.my.model.Head;
+import com.neo.protocol.my.model.Msg;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
-class MsgDecoder extends LengthFieldBasedFrameDecoder {
+public class MsgDecoder extends LengthFieldBasedFrameDecoder {
 
     MarshalDecoder marshalDecoder;
 
@@ -53,8 +53,7 @@ class MsgDecoder extends LengthFieldBasedFrameDecoder {
             }
             head.setAttachment(attachment);
         }
-        Msg msg = new Msg();
-        msg.setHead(head);
+        Msg msg = new Msg(head, null);
         // 除了body长度还有可读字节，才进行body解码
         if (frame.readableBytes() > 4) {
             msg.setBody(marshalDecoder.decode(frame));

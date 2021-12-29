@@ -1,16 +1,18 @@
-package com.neo.protocol.my.handler;
+package com.neo.protocol.my.client;
 
-import com.neo.protocol.my.struct.AuthRet;
-import com.neo.protocol.my.struct.Msg;
+import com.neo.protocol.my.model.AuthRet;
+import com.neo.protocol.my.model.Msg;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class AuthReqHandler extends ChannelInboundHandlerAdapter {
+class AuthReqHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        ctx.writeAndFlush(Msg.authReq());
+        Msg authReq = Msg.authReq();
+        log.info("login req: {}", authReq);
+        ctx.writeAndFlush(authReq);
     }
 
     @Override

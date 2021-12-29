@@ -1,6 +1,5 @@
-package com.neo.protocol.my.struct;
+package com.neo.protocol.my.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter

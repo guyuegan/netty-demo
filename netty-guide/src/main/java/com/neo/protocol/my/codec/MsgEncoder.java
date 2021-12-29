@@ -1,17 +1,22 @@
 package com.neo.protocol.my.codec;
 
-import com.neo.protocol.my.struct.Head;
-import com.neo.protocol.my.struct.Msg;
+import com.neo.protocol.my.model.Head;
+import com.neo.protocol.my.model.Msg;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-class MsgEncoder extends MessageToByteEncoder<Msg> {
+public class MsgEncoder extends MessageToByteEncoder<Msg> {
 
     MarshalEncoder marshalEncoder;
+
+    public MsgEncoder() throws IOException {
+        this.marshalEncoder = new MarshalEncoder();
+    }
 
     @Override
     protected void encode(ChannelHandlerContext ctx, Msg msg, ByteBuf out) throws Exception {

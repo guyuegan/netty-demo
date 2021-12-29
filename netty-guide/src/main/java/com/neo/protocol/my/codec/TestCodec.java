@@ -1,7 +1,7 @@
 package com.neo.protocol.my.codec;
 
-import com.neo.protocol.my.struct.Head;
-import com.neo.protocol.my.struct.Msg;
+import com.neo.protocol.my.model.Head;
+import com.neo.protocol.my.model.Msg;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 
@@ -32,10 +32,7 @@ class TestCodec {
         }
         head.setAttachment(attachment);
 
-        Msg msg = new Msg();
-        msg.setHead(head);
-        msg.setBody("abcdefg-----------------------AAAAAA");
-        return msg;
+        return new Msg(head, "abcdefg-----------------------AAAAAA");
     }
 
     public ByteBuf encode(Msg msg) throws Exception {
@@ -90,11 +87,10 @@ class TestCodec {
             head.setAttachment(attachment);
         }
 
-        Msg message = new Msg();
+        Msg message = new Msg(head, null);
         if (in.readableBytes() > 4) {
             message.setBody(marshalDecoder.decode(in));
         }
-        message.setHead(head);
         return message;
     }
 

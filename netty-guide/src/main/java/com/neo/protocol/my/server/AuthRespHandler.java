@@ -1,7 +1,6 @@
-package com.neo.protocol.my.handler;
+package com.neo.protocol.my.server;
 
-import com.neo.protocol.my.struct.AuthRet;
-import com.neo.protocol.my.struct.Msg;
+import com.neo.protocol.my.model.Msg;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 @Slf4j
-public class AuthRespHandler extends ChannelInboundHandlerAdapter {
+class AuthRespHandler extends ChannelInboundHandlerAdapter {
     private Set<String> loginNodes = new HashSet<>();
     private List<String> whiteList = Arrays.asList("127.0.0.1");
 
